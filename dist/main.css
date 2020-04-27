@@ -1,0 +1,30 @@
+body {
+  background-color: #4dff4d;
+  color: green;
+  height: 97vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column; }
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.card {
+  background: white;
+  height: 50vh;
+  width: 50vw;
+  border-radius: 15px;
+  margin-top: 15px;
+  box-shadow: 3px 3px 5px 5px #004d00, 1px 0px 1px #004d00; }
+
+.image-card {
+  background-image: url(images/yoda-stitch.jpg);
+  background-position: center; }
+
+h2 {
+  font-size: 3rem; }
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvc3R5bGVzL2luZGV4LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EseUJBQXlCOztBQUV6QjtBQUNBO0FBQ0E7QUFDQSwwQkFBMEI7O0FBRTFCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLDJEQUEyRDs7QUFFM0Q7QUFDQTtBQUNBLDhCQUE4Qjs7QUFFOUI7QUFDQSxrQkFBa0IiLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzRkZmY0ZDtcbiAgY29sb3I6IGdyZWVuO1xuICBoZWlnaHQ6IDk3dmg7XG4gIHdpZHRoOiAxMDB2dztcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgfVxuXG4uY2VudGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IH1cblxuLmNhcmQge1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgaGVpZ2h0OiA1MHZoO1xuICB3aWR0aDogNTB2dztcbiAgYm9yZGVyLXJhZGl1czogMTVweDtcbiAgbWFyZ2luLXRvcDogMTVweDtcbiAgYm94LXNoYWRvdzogM3B4IDNweCA1cHggNXB4ICMwMDRkMDAsIDFweCAwcHggMXB4ICMwMDRkMDA7IH1cblxuLmltYWdlLWNhcmQge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaW1hZ2VzL3lvZGEtc3RpdGNoLmpwZyk7XG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjsgfVxuXG5oMiB7XG4gIGZvbnQtc2l6ZTogM3JlbTsgfVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/
