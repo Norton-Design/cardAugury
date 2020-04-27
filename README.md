@@ -15,6 +15,8 @@ Card Augury will allow users to:
 
 Card Augury's UX/UI experience will be minimalist and streamlined in styling, particularly at the beginning of the experience and will expand in tools and options as the user moves deeper into the site. Users will be dropped onto a splash page only consisting of a search bar, which will upon being used will animate upwards toward its final index and show positions. The overall interface will be centered directly in the middle of the screen in a landscape orientation. Card images will be displayed on the left side of interface, with visualizations of key stats found on the right side.
 
+![wireframe](https://user-images.githubusercontent.com/56661062/80325017-81aa7c00-8801-11ea-8b71-d779b860cc59.png)
+
 ### Architecture and Technology 
 
 - `JavaScript` will make of the overall logic.
