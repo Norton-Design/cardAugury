@@ -1,5 +1,7 @@
+export let card;
+
 export const cardSearcher = e => {
-  e.preventDefault();
+  // e.preventDefault();
   const inputStr = document.getElementById("searchbar").value;
   const url = 'https://api.scryfall.com/cards/named?fuzzy=';
   const searchUrl = url + validSearchInput(inputStr);
@@ -8,10 +10,10 @@ export const cardSearcher = e => {
     .then(res => {
       const promise = res.json();
       promise.then(value => {
-        console.log(value)
-        return value;
+        // console.log(value)
+        card = value
+        // return value;
       })
-
     })
     .catch(err => console.log("ERROR"))
 }

@@ -1,21 +1,31 @@
 import "./styles/index.scss";
-import { cardSearcher } from './scripts/card_searcher'
+import { cardSearcher, card } from './scripts/card_searcher';
+import cardGenerator from './scripts/card_generator';
 
 window.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("center");
-  const card = document.createElement("div");
+  const board = document.createElement("div");
   const searchBar = document.createElement("form");
   const inputField = document.createElement("input");
   const submitButton = document.createElement("button");
+  const cardContainer = document.createElement("div");
 
-  card.classList.add("card", "center");
+  board.classList.add("board", "center");
   submitButton.innerHTML = "Search";
-
   inputField.setAttribute("id", "searchbar");
-  submitButton.addEventListener('click', cardSearcher)
+  cardContainer.setAttribute("id", "card-container");
 
-  card.append(searchBar);
+  submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    cardSearcher();
+    //  THIS NEEDS TO BE REPLACED LATER WITH A FUNCTION THAT HIDES THE DELAY
+    setTimeout(() => cardGenerator(card), 800)
+  })
+  // pass the return value to a function that amends the all components
+
+  board.append(searchBar);
   searchBar.append(inputField);
   searchBar.append(submitButton);
-  document.body.append(card);
+  document.body.append(board);
+  board.append(cardContainer);
 });
