@@ -1,12 +1,11 @@
 export let cardSet;
 
-export const cardSearcher = setCode => {
+export const setFetcher = setCode => {
   const searchUrl = `https://api.scryfall.com/cards/search?order=usd&q=e%3A${setCode}&unique=prints`;
   return fetch(searchUrl)
     .then(res => {
       const promise = res.json();
       promise.then(value => {
-        console.log(value)
         cardSet = value.data;
       })
     })

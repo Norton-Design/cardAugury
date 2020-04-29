@@ -1,16 +1,27 @@
-import { cardSet, cardSearcher } from './set_fetcher'
+import { cardSet, setFetcher } from './set_fetcher'
+import { typeTotals, setPriceAverager } from './set_stats_util'
 
 const cardGenerator = cardInfo => {
   console.log(cardInfo);
   const cardContainer = document.getElementById("card-container");
-  const price = cardInfo.prices;
   const imgLink = cardInfo.image_uris.normal;
 
   cardContainer.innerHTML = '';
 
   cardContainer.append(imgCreator(imgLink));
   cardContainer.append(statBlockCreator(cardInfo));
-  // cardContainer.append(setStatsCreator(cardInfo));
+  const genSetButton = document.createElement("button")
+  genSetButton.innerHTML = 'Generate Set Breakdown';
+  cardContainer.append(genSetButton);
+
+  // setTimeout(() => setStatsCreator(cardInfo, setFetcher), 0)
+
+  genSetButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    setTimeout(() => setStatsCreator(cardInfo, setFetcher), 0);
+  })
+
+ 
 }
 
 const imgCreator = imgLink => {
@@ -65,7 +76,7 @@ const statBlockCreator = cardInfo => {
   return statBlockContainer;
 }
 
-const setStatsCreator = cardInfo => {
+const setStatsCreator = (cardInfo, setFetcher) => {
   // RETURN A COMPONENT
 
   // HIGHCHARTS:
@@ -74,6 +85,11 @@ const setStatsCreator = cardInfo => {
   // CARD PRICE COMPARED TO THE TOP TEN VALUABLE CARDS OF THE SET
   // AND ITS RANK, AT THAT
 
+  setTimeout(()=>{
+    setFetcher(cardInfo.set), 200
+  })
+
+  setTimeout(()=> console.log(cardSet), 1000);
 }
 
 const capitalize = str =>{
