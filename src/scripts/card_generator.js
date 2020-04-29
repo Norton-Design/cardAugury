@@ -1,3 +1,4 @@
+import { cardSet, cardSearcher } from './set_fetcher'
 
 const cardGenerator = cardInfo => {
   console.log(cardInfo);
@@ -5,9 +6,11 @@ const cardGenerator = cardInfo => {
   const price = cardInfo.prices;
   const imgLink = cardInfo.image_uris.normal;
 
+  cardContainer.innerHTML = '';
+
   cardContainer.append(imgCreator(imgLink));
   cardContainer.append(statBlockCreator(cardInfo));
-
+  // cardContainer.append(setStatsCreator(cardInfo));
 }
 
 const imgCreator = imgLink => {
@@ -63,6 +66,13 @@ const statBlockCreator = cardInfo => {
 }
 
 const setStatsCreator = cardInfo => {
+  // RETURN A COMPONENT
+
+  // HIGHCHARTS:
+  // CARD TYPE BREAKDOWN PIECHART 
+
+  // CARD PRICE COMPARED TO THE TOP TEN VALUABLE CARDS OF THE SET
+  // AND ITS RANK, AT THAT
 
 }
 

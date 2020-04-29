@@ -1,7 +1,7 @@
 export let cardSet;
 
 export const cardSearcher = setCode => {
-  const searchUrl = `https://api.scryfall.com/cards/search?order=set&q=e%3A${setCode}&unique=prints`;
+  const searchUrl = `https://api.scryfall.com/cards/search?order=usd&q=e%3A${setCode}&unique=prints`;
   return fetch(searchUrl)
     .then(res => {
       const promise = res.json();
