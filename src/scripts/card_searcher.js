@@ -1,21 +1,17 @@
 export let card;
+import 'babel-polyfill';
 
-export const cardSearcher = e => {
+export const cardSearcher = async (e) => {
   // e.preventDefault();
   const inputStr = document.getElementById("searchbar").value;
   const url = 'https://api.scryfall.com/cards/named?fuzzy=';
   const searchUrl = url + validSearchInput(inputStr);
-  // // send ES6 fetch request 
-  return fetch(searchUrl)
-    .then(res => {
-      const promise = res.json();
-      promise.then(value => {
-        // console.log(value)
-        card = value
-        // return value;
-      })
-    })
-    .catch(err => console.log("ERROR"))
+
+  const response = await fetch(searchUrl);
+  const json = await response.json();
+  card = await json;
+
+  return card;
 }
 
 export const validSearchInput = searchInput => ( searchInput.split(' ').join("-") )

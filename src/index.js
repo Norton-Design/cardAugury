@@ -1,6 +1,7 @@
 import "./styles/index.scss";
 import { cardSearcher, card } from './scripts/card_searcher';
 import cardGenerator from './scripts/card_generator';
+// import 'babel-polyfill';
 
 window.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("center");
@@ -20,9 +21,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();
-    cardSearcher();
-    //  THIS NEEDS TO BE REPLACED LATER WITH A FUNCTION THAT HIDES THE DELAY
-    setTimeout(() => cardGenerator(card), 800)
+    cardSearcher()
+      .then(card => cardGenerator(card))
   })
   // pass the return value to a function that amends the all components
 

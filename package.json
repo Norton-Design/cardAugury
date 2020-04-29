@@ -18,7 +18,9 @@
     "url": "https://github.com/Norton-Design/cardAugury/issues"
   },
   "homepage": "https://github.com/Norton-Design/cardAugury#readme",
-  "dependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",

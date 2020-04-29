@@ -1,8 +1,10 @@
 import { cardSet, setFetcher } from './set_fetcher'
 import { typeTotals, setPriceAverager } from './set_stats_util'
+import { card } from './card_searcher';
+import 'babel-polyfill';
 
-const cardGenerator = cardInfo => {
-  console.log(cardInfo);
+const cardGenerator = async (cardInfo) => {
+  // console.log(cardInfo);
   const cardContainer = document.getElementById("card-container");
   const imgLink = cardInfo.image_uris.normal;
 
@@ -14,14 +16,18 @@ const cardGenerator = cardInfo => {
   genSetButton.innerHTML = 'Generate Set Breakdown';
   cardContainer.append(genSetButton);
 
-  // setTimeout(() => setStatsCreator(cardInfo, setFetcher), 0)
 
-  genSetButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    setTimeout(() => setStatsCreator(cardInfo, setFetcher), 0);
-  })
+  set = await setFetcher(cardInfo)
+  console.log(set);
 
- 
+  // setTimeout(() => console.log(setFetcher(cardInfo)), 1000)
+
+  // genSetButton.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   setTimeout(() => setFetcher(cardInfo), 0)
+  // }
+
+
 }
 
 const imgCreator = imgLink => {
@@ -34,7 +40,7 @@ const imgCreator = imgLink => {
   return imgContainer;
 }
 
-const statBlockCreator = cardInfo => {
+const statBlockCreator = (cardInfo) => {
   const { 
     name, 
     mana_cost, 
@@ -76,7 +82,7 @@ const statBlockCreator = cardInfo => {
   return statBlockContainer;
 }
 
-const setStatsCreator = (cardInfo, setFetcher) => {
+const setStatsCreator = async () => {
   // RETURN A COMPONENT
 
   // HIGHCHARTS:
@@ -84,12 +90,6 @@ const setStatsCreator = (cardInfo, setFetcher) => {
 
   // CARD PRICE COMPARED TO THE TOP TEN VALUABLE CARDS OF THE SET
   // AND ITS RANK, AT THAT
-
-  setTimeout(()=>{
-    setFetcher(cardInfo.set), 200
-  })
-
-  setTimeout(()=> console.log(cardSet), 1000);
 }
 
 const capitalize = str =>{
