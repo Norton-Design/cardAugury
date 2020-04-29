@@ -1,0 +1,18 @@
+
+.card-container {
+  display: flex;
+}
+
+
+.image-container {
+  margin-left: 4rem;
+  // width: 20rem;
+  height: 28rem;
+  background-color: black;
+  border-radius: 3px;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+

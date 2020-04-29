@@ -16,7 +16,7 @@ const imgCreator = imgLink => {
   const img = document.createElement("img");
   img.setAttribute("src", imgLink);
   imgContainer.append(img);
-  
+
   return imgContainer;
 }
 
@@ -31,9 +31,12 @@ const statBlockCreator = cardInfo => {
     cmc } = cardInfo;
 
   const statBlockContainer = document.createElement("ul");
+  statBlockContainer.classList.add("stat-block-container");
 
   const cardTitle = document.createElement("li")
-  cardTitle.innerHTML = name;
+  const title = document.createElement("h1")
+  title.innerHTML = name;
+  cardTitle.append(title)
   statBlockContainer.append(cardTitle);
 
   const cardCost = document.createElement("li");
@@ -57,6 +60,10 @@ const statBlockCreator = cardInfo => {
   statBlockContainer.append(cardType);
 
   return statBlockContainer;
+}
+
+const setStatsCreator = cardInfo => {
+
 }
 
 const capitalize = str =>{
