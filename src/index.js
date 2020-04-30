@@ -13,10 +13,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   board.classList.add("board", "center");
   submitButton.innerHTML = "Search";
+  submitButton.classList.add('search-button')
   inputField.setAttribute("id", "searchbar");
+  inputField.classList.add("searchbar");
   searchBar.classList.add("searchbar-container");
   cardContainer.setAttribute("id", "card-container");
-  inputField.classList.add("searchbar");
   cardContainer.classList.add("card-container");
 
   submitButton.addEventListener('click', (e) => {

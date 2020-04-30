@@ -1,4 +1,4 @@
-
+import 'babel-polyfill';
 
 export const typeTotals = async set => {
     // return obj with all types as keys except basic lands
@@ -22,6 +22,8 @@ export const typeTotals = async set => {
         if (types.includes('Basic')){
             continue;
         } else {
+            const cardValue = (typeof card.prices.usd === "undefined" || card.prices.usd === null) ? 0 : parseFloat(card.prices.usd)
+
             types.forEach(type => {
                 if (typeof stats[type] === 'undefined'){
                     stats[type] = 0
@@ -29,7 +31,8 @@ export const typeTotals = async set => {
                 stats[type] += 1
             });
             stats.nonBasicsTotal += 1;
-            stats.totalSetValue += parseFloat(card.prices.usd);
+            stats.totalSetValue += cardValue;
+            // console.log(typeof card.prices.usd);
 
             if (stats.nonPromoTopTen.length < 10){
                 stats.nonPromoTopTen.push(card)
