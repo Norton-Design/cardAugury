@@ -1,5 +1,4 @@
 import 'babel-polyfill';
-export let cardSet;
 
 export const setFetcher = async (cardInfo) => {
     const searchUrl = `https://api.scryfall.com/cards/search?order=usd&q=e%3A${cardInfo.set}&unique=prints`;
@@ -18,12 +17,10 @@ export const setFetcher = async (cardInfo) => {
 
         return setMerge([json, nextJson, finalJson])
       } else {
-        console.log(json);
-        console.log(nextJson);
-        return await nextJson;
+
+        return setMerge([json, nextJson]);
       }
     } else {
-    console.log(json);
     return await json;
   }
 }
@@ -36,7 +33,6 @@ const setMerge = async (arrOfSets) => {
     baseSet.data = baseSet.data.concat(mergingSet.data)
   }
 
-  cardSet = baseSet;
   return baseSet;
 }
 

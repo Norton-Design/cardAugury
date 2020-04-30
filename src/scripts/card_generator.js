@@ -1,6 +1,6 @@
-import { cardSet, setFetcher } from './set_fetcher'
-import { typeTotals, setPriceAverager } from './set_stats_util'
-import { card } from './card_searcher';
+import { setFetcher } from './set_fetcher'
+import { typeTotals } from './set_stats_util'
+// import { card } from './card_searcher';
 import 'babel-polyfill';
 
 const cardGenerator = async (cardInfo) => {
@@ -17,17 +17,8 @@ const cardGenerator = async (cardInfo) => {
   cardContainer.append(genSetButton);
 
 
-  set = await setFetcher(cardInfo)
-  console.log(set);
-
-  // setTimeout(() => console.log(setFetcher(cardInfo)), 1000)
-
-  // genSetButton.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   setTimeout(() => setFetcher(cardInfo), 0)
-  // }
-
-
+  setFetcher(cardInfo)
+    .then(cardSet => setStatsCreator(cardInfo, cardSet))
 }
 
 const imgCreator = imgLink => {
@@ -82,14 +73,18 @@ const statBlockCreator = (cardInfo) => {
   return statBlockContainer;
 }
 
-const setStatsCreator = async () => {
-  // RETURN A COMPONENT
+const setStatsCreator = async (cardInfo, cardSet) => {
+  // RETURN OR BUILD COMPONENT
 
   // HIGHCHARTS:
   // CARD TYPE BREAKDOWN PIECHART 
 
+  typeTotals(cardSet).then(totalBreakdown => console.log(totalBreakdown))
+
   // CARD PRICE COMPARED TO THE TOP TEN VALUABLE CARDS OF THE SET
   // AND ITS RANK, AT THAT
+
+  // setPriceAverager(cardSet).then(setPriceBreakdown => console.log(setPriceBreakdown))
 }
 
 const capitalize = str =>{
