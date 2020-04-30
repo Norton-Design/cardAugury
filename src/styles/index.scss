@@ -8,7 +8,10 @@ $main-color: rgb(138, 138, 138);
 $accent-color: darken($main-color, 10%);
 $background-color: lighten($main-color, 40%);
 
-// LAYOUT
+$body-font: 'Open Sans', sans-serif;
+$sub-font: 'Lato', sans-serif;
+$title-font: 'Roboto Mono', monospace;
+
 
 body {
   background-color: $background-color;
@@ -26,7 +29,6 @@ body {
   justify-content: center;
 }
 
-// COMPONENTS
 .board {
   background: white;
   min-height: 20rem;
@@ -37,7 +39,6 @@ body {
   @include basic-box-shadow($accent-color);
 }
 
-// TYPOGRAPHY
 h2 {
   font-size: 3rem;
 }

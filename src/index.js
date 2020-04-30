@@ -15,7 +15,9 @@ window.addEventListener("DOMContentLoaded", () => {
   submitButton.innerHTML = "Search";
   submitButton.classList.add('search-button')
   inputField.setAttribute("id", "searchbar");
+  inputField.setAttribute("placeholder", "Search for a card...");
   inputField.classList.add("searchbar");
+
   searchBar.classList.add("searchbar-container");
   cardContainer.setAttribute("id", "card-container");
   cardContainer.classList.add("card-container");
