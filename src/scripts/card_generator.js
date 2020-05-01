@@ -4,18 +4,14 @@ import { typeTotals } from './set_stats_util'
 import 'babel-polyfill';
 
 const cardGenerator = async (cardInfo) => {
-  // console.log(cardInfo);
   const cardContainer = document.getElementById("card-container");
   const imgLink = cardInfo.image_uris.normal;
-
+  
   cardContainer.innerHTML = '';
-
+  
   cardContainer.append(imgCreator(imgLink));
   cardContainer.append(statBlockCreator(cardInfo));
-  const genSetButton = document.createElement("button")
-  genSetButton.innerHTML = 'Generate Set Breakdown';
-  cardContainer.append(genSetButton);
-
+  cardContainer.append(setStatsCreator);
 
   setFetcher(cardInfo)
     .then(cardSet => setStatsCreator(cardInfo, cardSet))
@@ -74,17 +70,20 @@ const statBlockCreator = (cardInfo) => {
 }
 
 const setStatsCreator = async (cardInfo, cardSet) => {
-  // RETURN OR BUILD COMPONENT
+  const setStatContainer = document.createElement('div');
+  const genSetButton = document.createElement("button")
 
-  // HIGHCHARTS:
-  // CARD TYPE BREAKDOWN PIECHART 
+  setStatContainer.append(genSetButton)
+  genSetButton.innerHTML = 'Generate Set Breakdown';
+  
+  return setStatContainer;
 
   typeTotals(cardSet).then(totalBreakdown => console.log(totalBreakdown))
-
+  // RETURN OR BUILD COMPONENT
+  // HIGHCHARTS:
+  // CARD TYPE BREAKDOWN PIECHART 
   // CARD PRICE COMPARED TO THE TOP TEN VALUABLE CARDS OF THE SET
   // AND ITS RANK, AT THAT
-
-  // setPriceAverager(cardSet).then(setPriceBreakdown => console.log(setPriceBreakdown))
 }
 
 const capitalize = str =>{

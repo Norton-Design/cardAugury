@@ -1,18 +1,24 @@
 
 .card-container {
   display: flex;
-}
+  margin-top: 2rem;
 
+  .image-container {
+    margin-left: 4rem;
+    height: 28rem;
+    background-color: black;
+    border-radius: 3px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
 
-.image-container {
-  margin-left: 4rem;
-  // width: 20rem;
-  height: 28rem;
-  background-color: black;
-  border-radius: 3px;
-  img {
-    height: 100%;
-    width: 100%;
+  .stat-block-container {
+    max-width: 30rem;
   }
 }
+
+
+
 

@@ -1,9 +1,28 @@
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: .8rem;
+
+  h1 {
+    font-family: $title-font;
+    font-size: 2rem;
+    color: $accent-color
+  };
+
+  img {
+    height: 2rem;
+    margin-right: .5rem;
+  }
+}
+
 
 
 .searchbar-container {
   display: flex;
   flex-direction: row;
-  border: .5rem solid rgba(128, 128, 128, 0.226); 
+  border: .2rem solid rgba(128, 128, 128, 0.226); 
+  border-radius: .2rem;
   font-family: $sub-font;
 
   button {
@@ -13,11 +32,13 @@
     border-right: 1px solid black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    width: 4rem;
   }
   .searchbar {
     border: 1px solid black;
     font-family: inherit;
     font-size: 1em;
     padding-left: .3em;
+    width: 20rem;
   }
 }

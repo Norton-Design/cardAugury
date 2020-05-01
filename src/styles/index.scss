@@ -35,7 +35,7 @@ body {
   min-width: 40rem;
   border-radius: .2rem;
   margin-top: 15px;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
   @include basic-box-shadow($accent-color);
 }
 
@@ -43,5 +43,5 @@ h2 {
   font-size: 3rem;
 }
 
-@import "searchbar.scss";
+@import "header.scss";
 @import "card.scss";
