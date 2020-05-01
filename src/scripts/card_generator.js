@@ -1,4 +1,5 @@
 import { setFetcher } from './set_fetcher'
+import { typeTotals } from './set_stats_util';
 import 'babel-polyfill';
 const Highcharts = require('highcharts'); 
 require('highcharts/modules/exporting')(Highcharts);
@@ -10,9 +11,8 @@ const cardGenerator = async (cardInfo) => {
   const prevContainer = document.getElementById("card-container");
   const cardContainer = document.createElement("div");
   const imgLink = cardInfo.image_uris.normal;
-  if (prevContainer) {
-    board.removeChild(prevContainer);
-  } 
+
+  if (prevContainer) board.removeChild(prevContainer);
 
   board.append(cardContainer);
 
@@ -89,14 +89,51 @@ const setStatsCreator = (cardInfo, cardSet) => {
   const setStatContainer = document.createElement('div');
   const genSetButton = document.createElement("button")
 
-
   setStatContainer.append(genSetButton)
   setStatContainer.classList.add('set-stats-container')
   genSetButton.innerHTML = 'Generate Set Breakdown';
-  
-  return setStatContainer;
 
-  // typeTotals(cardSet).then(totalBreakdown => console.log(totalBreakdown))
+  typeTotals(cardSet).then(totalBreakdown => {
+    console.log(totalBreakdown);
+    const typeChart = Highcharts.chart('set-stats-container', {
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+      },
+      title: {
+        text: `Card Types in ${cardSet.name}`
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      accessibility: {
+        point: {
+          valueSuffix: '%'
+        }
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
+      },
+      series: [{
+        name: 'Types',
+        colorByPoint: true,
+        data: totalBreakdown.types.entities.map(pair => {
+          return {name: pair[0], y: pair[1]}
+        })
+      }]
+    });
+  })
+
+  return setStatContainer;
   // RETURN OR BUILD COMPONENT
   // HIGHCHARTS:
   // CARD TYPE BREAKDOWN PIECHART 
