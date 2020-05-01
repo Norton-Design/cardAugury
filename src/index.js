@@ -7,7 +7,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.createElement("form");
   const inputField = document.createElement("input");
   const submitButton = document.createElement("button");
-  const cardContainer = document.createElement("div");
   const searchIcon = document.createElement("i");
   const titleContainer = document.createElement('div');
   const title = document.createElement("h1");
@@ -17,9 +16,9 @@ window.addEventListener("DOMContentLoaded", () => {
   document.body.append(board);
 
   board.classList.add("board", "center");
+  board.setAttribute('id', "main-board")
   board.append(titleContainer)
   board.append(searchBar);
-  board.append(cardContainer);
 
   titleContainer.append(titleImg);
   titleContainer.append(title);
@@ -42,10 +41,6 @@ window.addEventListener("DOMContentLoaded", () => {
   searchBar.classList.add("searchbar-container");
   searchBar.append(inputField);
   searchBar.append(submitButton);
-
-  cardContainer.setAttribute("id", "card-container");
-  cardContainer.classList.add("card-container");
-
 
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();

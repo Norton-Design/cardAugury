@@ -2,10 +2,14 @@
 .card-container {
   display: flex;
   margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: $body-font;
 
   .image-container {
     margin-left: 4rem;
+    margin-right: 1rem;
     height: 28rem;
+    width: 21rem;
     background-color: black;
     border-radius: 3px;
     img {
@@ -15,7 +19,23 @@
   }
 
   .stat-block-container {
-    max-width: 30rem;
+    width: 21rem;
+  }
+
+  .set-stats-container {
+    margin-right: 4rem;
+    margin-left: 1rem;
+    width: 21rem;
+  }
+
+  .card-title-container {
+    display: flex;
+    flex-direction: row;
+
+    h2 {
+      font-size: 1.3rem;
+      font-family: $sub-font;
+    }
   }
 }
 

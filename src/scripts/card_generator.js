@@ -1,17 +1,26 @@
 import { setFetcher } from './set_fetcher'
-import { typeTotals } from './set_stats_util'
-// import { card } from './card_searcher';
 import 'babel-polyfill';
+const Highcharts = require('highcharts'); 
+require('highcharts/modules/exporting')(Highcharts);
+// Create the chart
+// Highcharts.chart('container', { /*Highcharts options*/ });
 
 const cardGenerator = async (cardInfo) => {
-  const cardContainer = document.getElementById("card-container");
+  const board = document.getElementById("main-board");
+  const prevContainer = document.getElementById("card-container");
+  const cardContainer = document.createElement("div");
   const imgLink = cardInfo.image_uris.normal;
-  
-  cardContainer.innerHTML = '';
-  
+  if (prevContainer) {
+    board.removeChild(prevContainer);
+  } 
+
+  board.append(cardContainer);
+
   cardContainer.append(imgCreator(imgLink));
   cardContainer.append(statBlockCreator(cardInfo));
-  cardContainer.append(setStatsCreator);
+  cardContainer.append(setStatsCreator());
+  cardContainer.setAttribute("id", "card-container");
+  cardContainer.classList.add("card-container");
 
   setFetcher(cardInfo)
     .then(cardSet => setStatsCreator(cardInfo, cardSet))
@@ -34,21 +43,32 @@ const statBlockCreator = (cardInfo) => {
     rarity, 
     oracle_text, 
     set_name, 
-    type_line, 
-    cmc } = cardInfo;
+    type_line,  
+  } = cardInfo;
 
   const statBlockContainer = document.createElement("ul");
   statBlockContainer.classList.add("stat-block-container");
 
   const cardTitle = document.createElement("li")
-  const title = document.createElement("h1")
+  const title = document.createElement("h2")
+  const cardCost = document.createElement("div");
+  cardCost.innerHTML = mana_cost;
   title.innerHTML = name;
   cardTitle.append(title)
+  cardTitle.append(cardCost);
+  cardTitle.classList.add("card-title-container");
   statBlockContainer.append(cardTitle);
 
-  const cardCost = document.createElement("li");
-  cardCost.innerHTML = mana_cost;
-  statBlockContainer.append(cardCost);
+  const hr = document.createElement("hr");
+  statBlockContainer.append(hr);
+
+  const cardType = document.createElement("li");
+  cardType.innerHTML = type_line;
+  statBlockContainer.append(cardType);
+
+  const cardSetName = document.createElement("li");
+  cardSetName.innerHTML = set_name;
+  statBlockContainer.append(cardSetName);
 
   const cardRarity = document.createElement("li");
   cardRarity.innerHTML = capitalize(rarity);
@@ -58,27 +78,25 @@ const statBlockCreator = (cardInfo) => {
   cardOracle.innerHTML = oracle_text;
   statBlockContainer.append(cardOracle);
 
-  const cardSetName = document.createElement("li");
-  cardSetName.innerHTML = set_name;
-  statBlockContainer.append(cardSetName);
 
-  const cardType = document.createElement("li");
-  cardType.innerHTML = type_line;
-  statBlockContainer.append(cardType);
+
+
 
   return statBlockContainer;
 }
 
-const setStatsCreator = async (cardInfo, cardSet) => {
+const setStatsCreator = (cardInfo, cardSet) => {
   const setStatContainer = document.createElement('div');
   const genSetButton = document.createElement("button")
 
+
   setStatContainer.append(genSetButton)
+  setStatContainer.classList.add('set-stats-container')
   genSetButton.innerHTML = 'Generate Set Breakdown';
   
   return setStatContainer;
 
-  typeTotals(cardSet).then(totalBreakdown => console.log(totalBreakdown))
+  // typeTotals(cardSet).then(totalBreakdown => console.log(totalBreakdown))
   // RETURN OR BUILD COMPONENT
   // HIGHCHARTS:
   // CARD TYPE BREAKDOWN PIECHART 

@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: .8rem;
+  margin-top: .8rem;
 
   h1 {
     font-family: $title-font;
@@ -15,8 +16,6 @@
     margin-right: .5rem;
   }
 }
-
-
 
 .searchbar-container {
   display: flex;
