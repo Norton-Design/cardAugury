@@ -10,15 +10,25 @@ const cardGenerator = async (cardInfo) => {
   const board = document.getElementById("main-board");
   const prevContainer = document.getElementById("card-container");
   const cardContainer = document.createElement("div");
+  const setStatContainer = document.createElement('div');
   const imgLink = cardInfo.image_uris.normal;
+  const setPieChartPlaceholder = document.createElement('div');
+  const setBarChartPlaceholder = document.createElement('div');
 
   if (prevContainer) board.removeChild(prevContainer);
+  
+  setStatContainer.classList.add('set-stats-container');
+  setPieChartPlaceholder.setAttribute("id", "set-pie-ph"); // <--- TARGET TO REPLACE THE PIECHART
+  setBarChartPlaceholder.setAttribute("id", "set-bar-ph"); // <--- TARGET TO REPLACE THE BARCHART
 
   board.append(cardContainer);
 
+  setStatContainer.append(setPieChartPlaceholder);
+  setStatContainer.append(setBarChartPlaceholder);
+
   cardContainer.append(imgCreator(imgLink));
   cardContainer.append(statBlockCreator(cardInfo));
-  cardContainer.append(setStatsCreator());
+  cardContainer.append(setStatContainer);
   cardContainer.setAttribute("id", "card-container");
   cardContainer.classList.add("card-container");
 
@@ -59,6 +69,8 @@ const statBlockCreator = (cardInfo) => {
   cardTitle.classList.add("card-title-container");
   statBlockContainer.append(cardTitle);
 
+
+  // SET THE LIST VALUES FOR THE CARD
   const hr = document.createElement("hr");
   statBlockContainer.append(hr);
 
@@ -78,24 +90,14 @@ const statBlockCreator = (cardInfo) => {
   cardOracle.innerHTML = oracle_text;
   statBlockContainer.append(cardOracle);
 
-
-
-
-
   return statBlockContainer;
 }
 
 const setStatsCreator = (cardInfo, cardSet) => {
-  const setStatContainer = document.createElement('div');
-  const genSetButton = document.createElement("button")
-
-  setStatContainer.append(genSetButton)
-  setStatContainer.classList.add('set-stats-container')
-  genSetButton.innerHTML = 'Generate Set Breakdown';
-
+  console.log(cardSet);
   typeTotals(cardSet).then(totalBreakdown => {
     console.log(totalBreakdown);
-    const typeChart = Highcharts.chart('set-stats-container', {
+    const typeChart = Highcharts.chart("set-pie-ph", {
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -103,7 +105,7 @@ const setStatsCreator = (cardInfo, cardSet) => {
         type: 'pie'
       },
       title: {
-        text: `Card Types in ${cardSet.name}`
+        text: `Card Types in ${cardInfo.set_name}`
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -126,19 +128,15 @@ const setStatsCreator = (cardInfo, cardSet) => {
       series: [{
         name: 'Types',
         colorByPoint: true,
-        data: totalBreakdown.types.entities.map(pair => {
+        data: Object.entries(totalBreakdown.types).map(pair => {
           return {name: pair[0], y: pair[1]}
         })
       }]
     });
+    // 
+    // APPEND THE PIE CHART TO THE PIE TARGET HERE:
+    // 
   })
-
-  return setStatContainer;
-  // RETURN OR BUILD COMPONENT
-  // HIGHCHARTS:
-  // CARD TYPE BREAKDOWN PIECHART 
-  // CARD PRICE COMPARED TO THE TOP TEN VALUABLE CARDS OF THE SET
-  // AND ITS RANK, AT THAT
 }
 
 const capitalize = str =>{

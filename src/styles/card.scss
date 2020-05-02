@@ -23,15 +23,27 @@
   }
 
   .set-stats-container {
+    display: flex;
+    flex-direction: column;
     margin-right: 4rem;
     margin-left: 1rem;
     width: 21rem;
+    border: 1px solid red;
+    #set-pie-ph {
+      width: 100%;
+      height: 50%;
+      border: 1px solid blue;  // <--- DESTROY AFTER CHARTS ARE SET
+    }
+    #set-bar-ph {
+      width: 100%;
+      height: 50%;
+      border: 1px solid pink;
+    }
   }
 
   .card-title-container {
     display: flex;
     flex-direction: row;
-
     h2 {
       font-size: 1.3rem;
       font-family: $sub-font;

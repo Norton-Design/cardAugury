@@ -7,32 +7,33 @@ export const typeTotals = async set => {
         nonBasicsTotal: 0, 
         totalSetValue: 0,
         nonPromoTopTen: [],
-        totalSetValueAverage: 0
+        totalSetValueAverage: 0,
+        types: {}
     };
 
     for (let i = 0; i < cards.length; i++){
         const card = cards[i];
-        let types;
+        let subTypes;
+        // REMOVE PROMO CARDS FROM THE POOL BECAUSE THEY'RE DUPES
         if (card.promo){
             continue;
         }
 
-        types = typeLineParser(card.type_line);
+        subTypes = typeLineParser(card.type_line); // <-- 
 
-        if (types.includes('Basic')){
+        if (subTypes.includes('Basic')){
             continue;
         } else {
             const cardValue = (typeof card.prices.usd === "undefined" || card.prices.usd === null) ? 0 : parseFloat(card.prices.usd)
 
-            types.forEach(type => {
-                if (typeof stats[type] === 'undefined'){
-                    stats[type] = 0
+            subTypes.forEach(type => {
+                if (typeof stats.types[type] === 'undefined'){
+                    stats.types[type] = 0
                 }
-                stats[type] += 1
+                stats.types[type] += 1
             });
             stats.nonBasicsTotal += 1;
             stats.totalSetValue += cardValue;
-            // console.log(typeof card.prices.usd);
 
             if (stats.nonPromoTopTen.length < 10){
                 stats.nonPromoTopTen.push(card)
