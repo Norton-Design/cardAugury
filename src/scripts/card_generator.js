@@ -12,19 +12,19 @@ const cardGenerator = async (cardInfo) => {
   const cardContainer = document.createElement("div");
   const setStatContainer = document.createElement('div');
   const imgLink = cardInfo.image_uris.normal;
-  const setPieChartPlaceholder = document.createElement('div');
   const setBarChartPlaceholder = document.createElement('div');
+  const setPieChartPlaceholder = document.createElement('div');
 
   if (prevContainer) board.removeChild(prevContainer);
   
   setStatContainer.classList.add('set-stats-container');
-  setPieChartPlaceholder.setAttribute("id", "set-pie-ph"); // <--- TARGET TO REPLACE THE PIECHART
   setBarChartPlaceholder.setAttribute("id", "set-bar-ph"); // <--- TARGET TO REPLACE THE BARCHART
+  setPieChartPlaceholder.setAttribute("id", "set-pie-ph"); // <--- TARGET TO REPLACE THE PIECHART
 
   board.append(cardContainer);
 
-  setStatContainer.append(setPieChartPlaceholder);
   setStatContainer.append(setBarChartPlaceholder);
+  setStatContainer.append(setPieChartPlaceholder);
 
   cardContainer.append(imgCreator(imgLink));
   cardContainer.append(statBlockCreator(cardInfo));
@@ -105,10 +105,15 @@ const setStatsCreator = (cardInfo, cardSet) => {
         type: 'pie'
       },
       title: {
-        text: `Card Types in ${cardInfo.set_name}`
+        text: `Card Types (${cardInfo.set_name})`,
+        style: {
+          "font-family": "$title-font",
+          "font-size": "1rem"
+        }
       },
       tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        pointFormat: '{series.name}: {point.percentage:.1f}%',
+        footerFormat: '\n ({point.y})'
       },
       accessibility: {
         point: {
@@ -121,7 +126,11 @@ const setStatsCreator = (cardInfo, cardSet) => {
           cursor: 'pointer',
           dataLabels: {
             enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            format: '{point.name}: {point.percentage:.1f}%',
+            style: {
+              fontWeight: 400,
+              fontFamily: "$body-font"
+            }
           }
         }
       },
@@ -133,9 +142,51 @@ const setStatsCreator = (cardInfo, cardSet) => {
         })
       }]
     });
-    // 
-    // APPEND THE PIE CHART TO THE PIE TARGET HERE:
-    // 
+
+    const valueChart = Highcharts.chart("set-bar-ph", {
+      chart: {
+        type: 'column'
+    },
+    title: {
+        text: `Most Valued (${cardInfo.set_name})`,
+        style: { 
+          "font-family": "$title-font",
+          "font-size": "1rem"
+        }
+    },
+    xAxis: {
+        categories: totalBreakdown.nonPromoTopTen.map(card => card.name),
+        crosshair: true,
+        labels: { enabled: false }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'USD'
+        },
+        // opposite: true
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>${point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Value',
+        colorByPoint: true,
+        data: totalBreakdown.nonPromoTopTen.map(card => parseFloat(card.prices.usd)),
+        showInLegend: false
+    }]
+    });
   })
 }
 
