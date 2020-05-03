@@ -128,7 +128,7 @@ const setStatsCreator = (cardInfo, cardSet) => {
       series: [{
         name: 'Types',
         colorByPoint: true,
-        data: Object.entries(totalBreakdown.types).sort((a,b) => a[1] - b[1]).map(pair => {
+        data: Object.entries(totalBreakdown.types).sort((a,b) => a[1] + b[1]).map(pair => {
           return {name: pair[0], y: pair[1]}
         })
       }]
