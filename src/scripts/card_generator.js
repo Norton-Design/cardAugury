@@ -14,12 +14,23 @@ const cardGenerator = async (cardInfo) => {
   const imgLink = cardInfo.image_uris.normal;
   const setBarChartPlaceholder = document.createElement('div');
   const setPieChartPlaceholder = document.createElement('div');
+  const pieLoadingIcon = document.createElement("i");
+  const barLoadingIcon = document.createElement("i");
 
   if (prevContainer) board.removeChild(prevContainer);
   
+  pieLoadingIcon.classList.add("fa");
+  pieLoadingIcon.classList.add("fa-spinner");
+
+  barLoadingIcon.classList.add("fa");
+  barLoadingIcon.classList.add("fa-spinner");
+
   setStatContainer.classList.add('set-stats-container');
   setBarChartPlaceholder.setAttribute("id", "set-bar-ph"); // <--- TARGET TO REPLACE THE BARCHART
   setPieChartPlaceholder.setAttribute("id", "set-pie-ph"); // <--- TARGET TO REPLACE THE PIECHART
+
+  setBarChartPlaceholder.append(barLoadingIcon);
+  setPieChartPlaceholder.append(pieLoadingIcon);
 
   board.append(cardContainer);
 
@@ -126,7 +137,7 @@ const setStatsCreator = (cardInfo, cardSet) => {
           cursor: 'pointer',
           dataLabels: {
             enabled: true,
-            format: '{point.name}: {point.percentage:.1f}%',
+            format: '{point.name}',
             style: {
               fontWeight: 400,
               fontFamily: "$body-font"
@@ -137,7 +148,7 @@ const setStatsCreator = (cardInfo, cardSet) => {
       series: [{
         name: 'Types',
         colorByPoint: true,
-        data: Object.entries(totalBreakdown.types).sort((a,b) => a[1] + b[1]).map(pair => {
+        data: Object.entries(totalBreakdown.types).sort((a,b) => a[1] - b[1]).reverse().map(pair => {
           return {name: pair[0], y: pair[1]}
         })
       }]
@@ -162,7 +173,8 @@ const setStatsCreator = (cardInfo, cardSet) => {
     yAxis: {
         min: 0,
         title: {
-            text: 'USD'
+            text: 'USD',
+            enabled: false
         },
         // opposite: true
     },

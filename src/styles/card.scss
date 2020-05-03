@@ -22,6 +22,7 @@
 
   .stat-block-container {
     width: 21rem;
+    margin: 0 1rem;
   }
 
   .set-stats-container {
@@ -30,16 +31,17 @@
     margin-right: 4rem;
     margin-left: 1rem;
     width: 21rem;
-    // border: 1px solid red;
     #set-pie-ph {
       width: 100%;
       height: 50%;
-      // border: 1px solid blue;  // <--- DESTROY AFTER CHARTS ARE SET
+      align-items: center;
+      justify-content: center;
     }
     #set-bar-ph {
       width: 100%;
       height: 50%;
-      // border: 1px solid pink;
+      align-items: center;
+      justify-content: center;
     }
   }
 
