@@ -68,7 +68,20 @@ window.addEventListener("DOMContentLoaded", () => {
   searchBar.append(inputField);
   searchBar.append(submitButton);
 
+  const modal = document.getElementById("modal");
+  const span = document.getElementsByClassName("close")[0];
 
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  console.log(modal)
 
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -83,3 +96,4 @@ window.addEventListener("DOMContentLoaded", () => {
   })
   // pass the return value to a function that amends the all components
 });
+
