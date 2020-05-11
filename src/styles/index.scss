@@ -38,7 +38,20 @@ body {
   padding-bottom: 2rem;
   @include basic-box-shadow($accent-color);
   margin-left: 5rem;
-  margin-right: 5rem
+  margin-right: 5rem;
+
+  .nav {
+    margin-top: .8rem;
+
+    a {
+      color: $main-color;
+    }
+  }
+
+  .nav-link {
+    font-size: 2rem;
+    margin: 0 .5rem;
+  }
 }
 
 h2 {

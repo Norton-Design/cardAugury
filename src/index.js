@@ -11,6 +11,21 @@ window.addEventListener("DOMContentLoaded", () => {
   const titleContainer = document.createElement('div');
   const title = document.createElement("h1");
   const titleImg = document.createElement("img");
+  const navContainer = document.createElement('div');
+  const gitLinkImg = document.createElement("i");
+  const linkedinLinkImg = document.createElement("i");
+  const gitLink = document.createElement("a");
+  const linkedinLink = document.createElement("a");
+
+  gitLink.append(gitLinkImg);
+  gitLink.classList.add('nav-link');
+  gitLink.setAttribute("href", "https://github.com/Norton-Design/cardAugury");
+  gitLink.setAttribute("target", "_blank");
+
+  linkedinLink.append(linkedinLinkImg);
+  linkedinLink.classList.add('nav-link');
+  linkedinLink.setAttribute("href", "https://www.linkedin.com/in/michael-norton-5b5559199/");
+  linkedinLink.setAttribute("target", "_blank");
 
   document.body.classList.add("center");
   document.body.append(board);
@@ -19,17 +34,28 @@ window.addEventListener("DOMContentLoaded", () => {
   board.setAttribute('id', "main-board")
   board.append(titleContainer)
   board.append(searchBar);
+  board.append(navContainer);
 
   titleContainer.append(titleImg);
   titleContainer.append(title);
   titleContainer.classList.add("title-container")
 
+  navContainer.append(gitLink);
+  navContainer.append(linkedinLink);
+  navContainer.classList.add('nav');
+
   titleImg.setAttribute("src", "./src/images/final-owl2.png")
 
-  title.innerHTML = "Card Augury"
+  title.innerHTML = "Card Augury";
 
   searchIcon.classList.add("fa");
   searchIcon.classList.add("fa-search");
+
+  linkedinLinkImg.classList.add('fa');
+  linkedinLinkImg.classList.add('fa-linkedin');
+
+  gitLinkImg.classList.add('fa');
+  gitLinkImg.classList.add('fa-github');
 
   submitButton.append(searchIcon);
   submitButton.classList.add('search-button');
@@ -42,10 +68,18 @@ window.addEventListener("DOMContentLoaded", () => {
   searchBar.append(inputField);
   searchBar.append(submitButton);
 
+
+
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();
+
+    
     cardSearcher()
-      .then(card => cardGenerator(card))
+      .then(card => 
+        {board.removeChild(navContainer)
+        cardGenerator(card)
+      })
+      .then(() => board.append(navContainer))
   })
   // pass the return value to a function that amends the all components
 });
