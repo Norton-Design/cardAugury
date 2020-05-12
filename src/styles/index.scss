@@ -12,6 +12,12 @@ $body-font: 'Open Sans', sans-serif;
 $sub-font: 'Lato', sans-serif;
 $title-font: 'Roboto Mono', monospace;
 
+html {
+  height: 100%;
+  width: 100%;
+  min-height: 850px;
+}
+
 body {
   background-color: $background-color;
   color: $main-color;
