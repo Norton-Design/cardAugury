@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   navContainer.append(gitLink);
   navContainer.append(linkedinLink);
-  // navContainer.append(angelLink)
+  navContainer.append(angelLink)
   navContainer.classList.add('nav');
 
   titleImg.setAttribute("src", "./src/images/final-owl2.png")
