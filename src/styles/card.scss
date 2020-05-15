@@ -92,7 +92,7 @@
   div {
     width: 100%;
     // justify-content: center;
-    @include lesser-box-shadow($accent-color);
+    @include basic-box-shadow($accent-color);
   }
 
   h2 {
