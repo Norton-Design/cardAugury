@@ -4,6 +4,10 @@
   box-shadow: 3px 3px 5px 5px $color, 1px 0px 1px $color;
 }
 
+@mixin lesser-box-shadow($color) {
+  box-shadow: 1px 1px 5px 5px $color, 1px 0px 1px $color;
+}
+
 $main-color: rgb(138, 138, 138);
 $accent-color: darken($main-color, 10%);
 $background-color: lighten($main-color, 40%);

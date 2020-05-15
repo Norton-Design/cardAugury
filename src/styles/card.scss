@@ -76,8 +76,32 @@
       font-family: $sub-font;
     }
   }
+
 }
 
+#errors-container {
+  background-color: red;
+  align-self: flex-start;
+  color: whitesmoke;
+  width: 100%;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+
+  
+  div {
+    width: 100%;
+    // justify-content: center;
+    @include lesser-box-shadow($accent-color);
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+  }
+}
 
 
 
