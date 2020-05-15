@@ -16,22 +16,28 @@ window.addEventListener("DOMContentLoaded", () => {
   const linkedinLinkImg = document.createElement("i");
   const gitLink = document.createElement("a");
   const linkedinLink = document.createElement("a");
+  const errorsContainer = document.createElement("div");
+
+  errorsContainer.setAttribute('id', "errors-container")
 
   gitLink.append(gitLinkImg);
   gitLink.classList.add('nav-link');
   gitLink.setAttribute("href", "https://github.com/Norton-Design/cardAugury");
   gitLink.setAttribute("target", "_blank");
+  gitLink.setAttribute("rel", "noopener noreferrer");
 
   linkedinLink.append(linkedinLinkImg);
   linkedinLink.classList.add('nav-link');
   linkedinLink.setAttribute("href", "https://www.linkedin.com/in/michael-norton-5b5559199/");
   linkedinLink.setAttribute("target", "_blank");
+  linkedinLink.setAttribute("rel", "noopener noreferrer");
 
   document.body.classList.add("center");
   document.body.append(board);
 
   board.classList.add("board", "center");
   board.setAttribute('id', "main-board")
+  board.append(errorsContainer);
   board.append(titleContainer)
   board.append(searchBar);
   board.append(navContainer);
@@ -81,8 +87,6 @@ window.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "none";
   }
 
-  console.log(modal)
-
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -93,6 +97,7 @@ window.addEventListener("DOMContentLoaded", () => {
         cardGenerator(card)
       })
       .then(() => board.append(navContainer))
+      // .catch(()=> console.log("ERROR"))
   })
   // pass the return value to a function that amends the all components
 });
