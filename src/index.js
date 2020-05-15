@@ -14,8 +14,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const navContainer = document.createElement('div');
   const gitLinkImg = document.createElement("i");
   const linkedinLinkImg = document.createElement("i");
+  const angelLinkImg = document.createElement("i");
   const gitLink = document.createElement("a");
   const linkedinLink = document.createElement("a");
+  const angelLink = document.createElement("a");
   const errorsContainer = document.createElement("div");
 
   errorsContainer.setAttribute('id', "errors-container")
@@ -31,6 +33,12 @@ window.addEventListener("DOMContentLoaded", () => {
   linkedinLink.setAttribute("href", "https://www.linkedin.com/in/michael-norton-5b5559199/");
   linkedinLink.setAttribute("target", "_blank");
   linkedinLink.setAttribute("rel", "noopener noreferrer");
+
+  angelLink.append(angelLinkImg);
+  angelLink.classList.add('nav-link');
+  angelLink.setAttribute("href", "https://angel.co/u/michael-norton-17");
+  angelLink.setAttribute("target", "_blank");
+  angelLink.setAttribute("rel", "noopener noreferrer");
 
   document.body.classList.add("center");
   document.body.append(board);
@@ -48,6 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   navContainer.append(gitLink);
   navContainer.append(linkedinLink);
+  navContainer.append(angelLink)
   navContainer.classList.add('nav');
 
   titleImg.setAttribute("src", "./src/images/final-owl2.png")
@@ -62,6 +71,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   gitLinkImg.classList.add('fa');
   gitLinkImg.classList.add('fa-github');
+
+  angelLinkImg.classList.add('fa');
+  angelLinkImg.classList.add('fa-angellist');
 
   submitButton.append(searchIcon);
   submitButton.classList.add('search-button');
