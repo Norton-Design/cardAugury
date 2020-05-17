@@ -1,5 +1,7 @@
 # Card Augury
 
+[Live Demo](https://norton-design.github.io/cardAugury/)
+
 ### Background and Overview
 
 Card Augury is a data visualization project based on Magic: The Gathering, a trading card game. The game itself is now widely considered to be the world's most complex real-world game (as opposed to games that exist theoretically for game theory research). Card Augury is a project dedicated to breaking down raw data about the game (card types, sets, and secondary market prices eventually, etc.) to assist the user to predict future trends within the development of the game, and make the most out of our card purchases.
