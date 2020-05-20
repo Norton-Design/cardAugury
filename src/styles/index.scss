@@ -35,7 +35,7 @@ body {
   flex-direction: column;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .board {
@@ -43,7 +43,7 @@ body {
   min-height: 20rem;
   min-width: 40rem;
   border-radius: .2rem;
-  margin-top: 5rem;
+  margin-top: 0rem;
   margin-bottom: 5rem;
   padding-bottom: 2rem;
   @include basic-box-shadow($accent-color);

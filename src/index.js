@@ -19,8 +19,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const linkedinLink = document.createElement("a");
   const angelLink = document.createElement("a");
   const errorsContainer = document.createElement("div");
+  const instructionsContainer = document.createElement('div');
+  const instructionsButton = document.createElement("i");
 
-  errorsContainer.setAttribute('id', "errors-container")
+  instructionsContainer.classList.add('instructions-container');
+  instructionsContainer.append(instructionsButton)
+
+  errorsContainer.setAttribute('id', "errors-container");
 
   gitLink.append(gitLinkImg);
   gitLink.classList.add('nav-link');
@@ -48,6 +53,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   board.classList.add("board", "center");
   board.setAttribute('id', "main-board")
+  board.append(instructionsContainer)
   board.append(errorsContainer);
   board.append(titleContainer)
   board.append(searchBar);
@@ -81,6 +87,9 @@ window.addEventListener("DOMContentLoaded", () => {
   submitButton.append(searchIcon);
   submitButton.classList.add('search-button');
 
+  instructionsButton.classList.add("fa");
+  instructionsButton.classList.add("fa-bars");
+
   inputField.setAttribute("id", "searchbar");
   inputField.setAttribute("placeholder", "Search for a card...");
   inputField.classList.add("searchbar");
@@ -102,16 +111,30 @@ window.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "none";
   }
 
+  instructionsButton.onclick = function() {
+    modal.style.display = "block";
+  }
+
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();
 
     
     cardSearcher()
-      .then(card => 
-        {board.removeChild(navContainer)
-        cardGenerator(card)
+      .then(card => {
+        const navCon = document.getElementsByClassName("nav")[0];
+        if (navCon) {
+          board.removeChild(navContainer)
+        }
+        cardGenerator(card);
+        board.append(navContainer)
+
+        if (card.object) {
+          board.style.margin = "0 5rem 0 rem 5rem";
+          board.style.minHeight = 'inherit';
+        }
+        instructionsContainer.style.margin = "1.2rem 0";
       })
-      .then(() => board.append(navContainer))
+      // .then(() => board.append(navContainer))
       // .catch(()=> console.log("ERROR"))
   })
   // pass the return value to a function that amends the all components

@@ -103,6 +103,23 @@
   }
 }
 
+.instructions-container {
+  // margin-top: 16px;
+  justify-self: flex-start;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  i {
+    margin-right: 2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
 
 
 

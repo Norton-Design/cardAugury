@@ -17,6 +17,9 @@ export const cardSearcher = async (e) => {
     //make error and append to board.input
     const errorBanner = document.createElement('div');
     const error = document.createElement('h2')
+    const board = document.getElementsByClassName("board")[0];
+
+    board.style.margin = "5rem";
 
     errorBanner.setAttribute('id', "error-sub")
     error.setAttribute('id', 'error-message')
