@@ -105,9 +105,9 @@ const statBlockCreator = (cardInfo) => {
 }
 
 const setStatsCreator = (cardInfo, cardSet) => {
-  console.log(cardSet);
+  // console.log(cardSet);
   typeTotals(cardSet).then(totalBreakdown => {
-    console.log(totalBreakdown);
+    // console.log(totalBreakdown);
     const typeChart = Highcharts.chart("set-pie-ph", {
       chart: {
         plotBackgroundColor: null,

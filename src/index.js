@@ -27,18 +27,21 @@ window.addEventListener("DOMContentLoaded", () => {
   gitLink.setAttribute("href", "https://github.com/Norton-Design/cardAugury");
   gitLink.setAttribute("target", "_blank");
   gitLink.setAttribute("rel", "noopener noreferrer");
+  gitLink.setAttribute('title', 'Github Repo');
 
   linkedinLink.append(linkedinLinkImg);
   linkedinLink.classList.add('nav-link');
   linkedinLink.setAttribute("href", "https://www.linkedin.com/in/michael-norton-5b5559199/");
   linkedinLink.setAttribute("target", "_blank");
   linkedinLink.setAttribute("rel", "noopener noreferrer");
+  linkedinLink.setAttribute('title', 'Linkedin Link')
 
   angelLink.append(angelLinkImg);
   angelLink.classList.add('nav-link');
   angelLink.setAttribute("href", "https://angel.co/u/michael-norton-17");
   angelLink.setAttribute("target", "_blank");
   angelLink.setAttribute("rel", "noopener noreferrer");
+  angelLink.setAttribute("title", "Angellist Link");
 
   document.body.classList.add("center");
   document.body.append(board);
