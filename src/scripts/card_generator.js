@@ -3,8 +3,6 @@ import { typeTotals } from './set_stats_util';
 import 'babel-polyfill';
 const Highcharts = require('highcharts'); 
 require('highcharts/modules/exporting')(Highcharts);
-// Create the chart
-// Highcharts.chart('container', { /*Highcharts options*/ });
 
 const cardGenerator = async (cardInfo) => {
   const board = document.getElementById("main-board");

@@ -2,7 +2,6 @@ export let card;
 import 'babel-polyfill';
 
 export const cardSearcher = async (e) => {
-  // e.preventDefault();
   const inputStr = document.getElementById("searchbar").value;
   const url = 'https://api.scryfall.com/cards/named?fuzzy=';
   const searchUrl = url + validSearchInput(inputStr);

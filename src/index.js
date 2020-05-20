@@ -135,8 +135,6 @@ window.addEventListener("DOMContentLoaded", () => {
         instructionsContainer.style.margin = "1.2rem 0";
       })
       // .then(() => board.append(navContainer))
-      // .catch(()=> console.log("ERROR"))
   })
-  // pass the return value to a function that amends the all components
 });
 

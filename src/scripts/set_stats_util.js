@@ -63,33 +63,3 @@ const typeLineParser = typeLineStr => {
     const typeArr = typeLineStr.split(' ')
     return typeArr.filter(type => type.length > 2)
 }
-
-const highchartsDigest = (stats) => {
-    //check highcharts for formatting...
-}
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     var myChart = Highcharts.chart('container', {
-//         chart: {
-//             type: 'bar'
-//         },
-//         title: {
-//             text: 'Top Ten in {SET NAME}'
-//         },
-//         xAxis: {
-//             categories: ['Apples', 'Bananas', 'Oranges']
-//         },
-//         yAxis: {
-//             title: {
-//                 text: 'USD'
-//             }
-//         },
-//         series: [{
-//             name: 'Jane',
-//             data: [1, 0, 4]
-//         }, {
-//             name: 'John',
-//             data: [5, 7, 3]
-//         }]
-//     });
-// });
