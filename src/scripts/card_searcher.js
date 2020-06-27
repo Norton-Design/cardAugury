@@ -28,6 +28,8 @@ export const cardSearcher = async (e) => {
     errorTarget.append(errorBanner)
 
     return;
+  } else {
+    console.log(card)
   }
 
   return card;

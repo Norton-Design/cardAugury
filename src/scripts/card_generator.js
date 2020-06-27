@@ -71,7 +71,7 @@ const statBlockCreator = (cardInfo) => {
   const cardTitle = document.createElement("li")
   const title = document.createElement("h2")
   const cardCost = document.createElement("div");
-  cardCost.innerHTML = mana_cost;
+  cardCost.innerHTML = mana_cost;  //<--- run through img function
   title.innerHTML = name;
   cardTitle.append(title)
   cardTitle.append(cardCost);

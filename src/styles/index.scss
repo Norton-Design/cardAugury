@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  background-color: $background-color;
+  background-color: #eee5d6;
   color: $main-color;
   height: 100%;
   width: 100%;
@@ -36,6 +36,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  background-color: #eee5d6;
 }
 
 .board {
