@@ -18,7 +18,7 @@ export const manaImageGenerator = manaStr => {
             const img = document.createElement("img");
             img.setAttribute("src", `https://img.scryfall.com/symbology/${subStr}.svg`);
 
-            console.log(`https://img.scryfall.com/symbology/${subStr}.svg`);
+            // console.log(`https://img.scryfall.com/symbology/${subStr}.svg`);
 
             results.append(img);
         } else {
