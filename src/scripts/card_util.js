@@ -34,9 +34,8 @@ export const oracleTextHandler = (textStr, parentCon) => {
         const char = textStr[i];
 
         if (char === '↵'){
-            const newListItem = document.createElement('li')
-            newListItem.innerHTML = subStr;
-            collection.push(newListItem);
+            collection.push(subStr);
+            console.log(subStr);
 
             subStr = '';
         } else {
@@ -44,8 +43,12 @@ export const oracleTextHandler = (textStr, parentCon) => {
         }
     }
 
-    collection.forEach(ele => {
-        parentCon.append(ele)
+    collection.push(subStr);
+
+    collection.forEach(subStr => {
+        const newListItem = document.createElement('li');
+        newListItem.innerHTML = subStr;
+        parentCon.append(newListItem);
     })
 }
 

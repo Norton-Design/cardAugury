@@ -1,6 +1,6 @@
 import { setFetcher } from './set_fetcher'
 import { typeTotals } from './set_stats_util';
-import { manaImageGenerator } from './card_util'
+import { manaImageGenerator, oracleTextHandler } from './card_util'
 import 'babel-polyfill';
 const Highcharts = require('highcharts'); 
 require('highcharts/modules/exporting')(Highcharts);
@@ -63,7 +63,8 @@ const statBlockCreator = (cardInfo) => {
     rarity, 
     oracle_text, 
     set_name, 
-    type_line,  
+    type_line, 
+    flavor_text 
   } = cardInfo;
 
   const statBlockContainer = document.createElement("ul");
@@ -98,9 +99,17 @@ const statBlockCreator = (cardInfo) => {
   cardRarity.innerHTML = capitalize(rarity);
   statBlockContainer.append(cardRarity);
 
-  const cardOracle = document.createElement("li");
-  cardOracle.innerHTML = oracle_text;
-  statBlockContainer.append(cardOracle);
+  // const cardOracle = document.createElement("li");
+  // cardOracle.innerHTML = oracle_text;
+  // statBlockContainer.append(cardOracle);
+
+  oracleTextHandler(oracle_text, statBlockContainer); //<--- This is the new testing script ------
+
+  if (flavor_text){
+    const cardFlavorText = document.createElement("li");
+    cardFlavorText.innerHTML = flavor_text;
+    statBlockContainer.append(cardFlavorText);
+  }
 
   return statBlockContainer;
 }
