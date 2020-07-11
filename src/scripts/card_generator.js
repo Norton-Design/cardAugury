@@ -88,25 +88,28 @@ const statBlockCreator = (cardInfo) => {
   statBlockContainer.append(hr);
 
   const cardType = document.createElement("li");
-  cardType.innerHTML = type_line;
+  cardType.innerHTML = capitalize(rarity) + ' ' + type_line;
   statBlockContainer.append(cardType);
 
   const cardSetName = document.createElement("li");
   cardSetName.innerHTML = set_name;
   statBlockContainer.append(cardSetName);
 
-  const cardRarity = document.createElement("li");
-  cardRarity.innerHTML = capitalize(rarity);
-  statBlockContainer.append(cardRarity);
+  statBlockContainer.append(document.createElement("hr"))
+
+  // const cardRarity = document.createElement("li");
+  // cardRarity.innerHTML = capitalize(rarity);
+  // statBlockContainer.append(cardRarity);
 
   // const cardOracle = document.createElement("li");
   // cardOracle.innerHTML = oracle_text;
   // statBlockContainer.append(cardOracle);
 
-  oracleTextHandler(oracle_text, statBlockContainer); //<--- This is the new testing script ------
+  oracleTextHandler(oracle_text, statBlockContainer);
 
   if (flavor_text){
     const cardFlavorText = document.createElement("li");
+    cardFlavorText.classList.add('flavor');
     cardFlavorText.innerHTML = flavor_text;
     statBlockContainer.append(cardFlavorText);
   }

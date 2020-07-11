@@ -31,6 +31,16 @@
   .stat-block-container {
     width: 21rem;
     margin: 0 1rem;
+
+    .oracle {
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
+
+    .flavor {
+      font-style: italic;
+      font-size: .9rem;
+    }
   }
 
   .set-stats-container {

@@ -31,6 +31,7 @@ export const oracleTextHandler = (textStr, parentCon) => {
 
     collection.forEach(subStr => {
         const newListItem = document.createElement('li');
+        newListItem.classList.add('oracle')
         newListItem.innerHTML = subStr;
         parentCon.append(newListItem);
     })
