@@ -1,7 +1,6 @@
 
 
 export const manaImageGenerator = manaStr => {
-    // console.log(manaStr)
     let results = document.createElement('div');
     results.classList.add("mana-symbol-container");
 
@@ -18,8 +17,6 @@ export const manaImageGenerator = manaStr => {
             const img = document.createElement("img");
             img.setAttribute("src", `https://img.scryfall.com/symbology/${subStr}.svg`);
 
-            // console.log(`https://img.scryfall.com/symbology/${subStr}.svg`);
-
             results.append(img);
         } else {
             subStr = subStr + letter;
@@ -27,5 +24,28 @@ export const manaImageGenerator = manaStr => {
     }
 
     return results;
+}
+
+export const oracleTextHandler = (textStr, parentCon) => {
+    const collection = [];
+    let subStr = '';
+
+    for (let i = 0; i < textStr.length; i++){
+        const char = textStr[i];
+
+        if (char === '↵'){
+            const newListItem = document.createElement('li')
+            newListItem.innerHTML = subStr;
+            collection.push(newListItem);
+
+            subStr = '';
+        } else {
+            subStr += char;
+        }
+    }
+
+    collection.forEach(ele => {
+        parentCon.append(ele)
+    })
 }
 

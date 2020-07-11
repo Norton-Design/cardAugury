@@ -1,6 +1,6 @@
 import { setFetcher } from './set_fetcher'
 import { typeTotals } from './set_stats_util';
-import { manaImageGenerator } from './mana_image_generator'
+import { manaImageGenerator } from './card_util'
 import 'babel-polyfill';
 const Highcharts = require('highcharts'); 
 require('highcharts/modules/exporting')(Highcharts);
@@ -73,9 +73,7 @@ const statBlockCreator = (cardInfo) => {
   const title = document.createElement("h2")
   const cardCost = document.createElement("div");
 
-  // cardCost.innerHTML = manaImageGenerator(mana_cost);  //<--- run through img function
-  cardCost.append(manaImageGenerator(mana_cost)); // Test Run
-  // console.log(mana_cost);
+  cardCost.append(manaImageGenerator(mana_cost));
 
   title.innerHTML = name;
   cardTitle.append(title)
