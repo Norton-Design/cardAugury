@@ -27,28 +27,7 @@ export const manaImageGenerator = manaStr => {
 }
 
 export const oracleTextHandler = (textStr, parentCon) => {
-    const collection = [];
-    let subStr = '';
-    // console.log(textStr);
-
-    let testArr = textStr.split("\n");
-    console.log(testArr.length)
-
-    for (let i = 0; i < textStr.length; i++){
-        const char = textStr[i];
-        // console.log(char);
-
-        if (char === '↵'){
-            collection.push(subStr);
-            // console.log(subStr);
-
-            subStr = '';
-        } else {
-            subStr += char;
-        }
-    }
-
-    collection.push(subStr);
+    let collection = textStr.split("\n");
 
     collection.forEach(subStr => {
         const newListItem = document.createElement('li');
