@@ -1,4 +1,4 @@
-
+import { capitalize } from './card_generator';
 
 export const manaImageGenerator = manaStr => {
     let results = document.createElement('div');
@@ -38,5 +38,50 @@ export const oracleTextHandler = (textStr, parentCon) => {
 }
 
 export const buildLegalities = (legalObj, legContainer) => {
-    
+    const relevantFormats = [
+        'commander', 
+        'standard', 
+        'pioneer', 
+        'modern', 
+        'historic', 
+        'pauper',
+        'legacy',
+        'vintage',
+        'brawl',
+        'penny'
+    ]
+    const innerContainer = document.createElement('dl')
+
+    relevantFormats.forEach(formatStr => {
+        const legalStatus = document.createElement('dd');
+        legalStatus.classList.add('legal-status')
+
+        const format = document.createElement('dt');
+        format.innerHTML = capitalize(formatStr);
+        format.classList.add('format-name');
+
+        switch(legalObj[formatStr]){
+            case 'legal':
+                legalStatus.innerHTML = "LEGAL";
+                legalStatus.classList.add('legal')
+                break
+            case 'not_legal':
+                legalStatus.innerHTML = "NOT LEGAL";
+                legalStatus.classList.add('not-legal')
+                break
+            case 'banned':
+                legalStatus.innerHTML = "BANNED";
+                legalStatus.classList.add('banned')
+                break
+            case 'restricted':
+                legalStatus.innerHTML = "REST.";
+                legalStatus.classList.add('rest')
+                break
+        }
+
+        innerContainer.append(format);
+        innerContainer.append(legalStatus);
+    })
+
+    legContainer.append(innerContainer)
 }

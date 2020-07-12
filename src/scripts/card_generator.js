@@ -5,7 +5,7 @@ import 'babel-polyfill';
 const Highcharts = require('highcharts'); 
 require('highcharts/modules/exporting')(Highcharts);
 
-const cardGenerator = async (cardInfo) => {
+export const cardGenerator = async (cardInfo) => {
   const board = document.getElementById("main-board");
   const prevContainer = document.getElementById("card-container");
   const cardContainer = document.createElement("div");
@@ -100,17 +100,17 @@ const statBlockCreator = (cardInfo) => {
 
   oracleTextHandler(oracle_text, statBlockContainer);
 
-  const legalitiesContainer = document.createElement('li');
-  legalitiesContainer.classList.add('legalities-container');
-  buildLegalities(legalities, legalitiesContainer);
-  statBlockContainer.append(legalitiesContainer);
-
   if (flavor_text){
     const cardFlavorText = document.createElement("li");
     cardFlavorText.classList.add('flavor');
     cardFlavorText.innerHTML = flavor_text;
     statBlockContainer.append(cardFlavorText);
   }
+
+  const legalitiesContainer = document.createElement('li');
+  legalitiesContainer.classList.add('legalities-container');
+  buildLegalities(legalities, legalitiesContainer);
+  statBlockContainer.append(legalitiesContainer);
 
   return statBlockContainer;
 }
@@ -213,8 +213,6 @@ const setStatsCreator = (cardInfo, cardSet) => {
   })
 }
 
-const capitalize = str =>{
+export const capitalize = str =>{
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-export default cardGenerator;

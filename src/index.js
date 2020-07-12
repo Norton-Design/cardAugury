@@ -1,6 +1,6 @@
 import "./styles/index.scss";
 import { cardSearcher } from './scripts/card_searcher';
-import cardGenerator from './scripts/card_generator';
+import { cardGenerator } from './scripts/card_generator';
 
 window.addEventListener("DOMContentLoaded", () => {
   const board = document.createElement("div");
