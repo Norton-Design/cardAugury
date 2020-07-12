@@ -37,3 +37,6 @@ export const oracleTextHandler = (textStr, parentCon) => {
     })
 }
 
+export const buildLegalities = (legalObj, legContainer) => {
+    
+}
