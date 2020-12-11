@@ -142,5 +142,18 @@
   }
 }
 
+.legalities-container {
 
+  dl {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-self: flex-end;
+  }
+}
 
+.legal-status {
+  border: 1px solid red;
+  width: 5rem;
+  font-size: .6rem;
+}

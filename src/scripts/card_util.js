@@ -58,6 +58,7 @@ export const buildLegalities = (legalObj, legContainer) => {
 
         const format = document.createElement('dt');
         format.innerHTML = capitalize(formatStr);
+        format.classList.add('legal-status')
         format.classList.add('format-name');
 
         switch(legalObj[formatStr]){
