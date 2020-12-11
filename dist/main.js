@@ -24505,7 +24505,7 @@ window.addEventListener("DOMContentLoaded", function () {
   linkedinLink.setAttribute('title', 'Linkedin Link');
   angelLink.append(angelLinkImg);
   angelLink.classList.add('nav-link');
-  angelLink.setAttribute("href", "https://angel.co/u/michael-norton-17");
+  angelLink.setAttribute("href", "https://angel.co/u/michael-norton-software-engineer");
   angelLink.setAttribute("target", "_blank");
   angelLink.setAttribute("rel", "noopener noreferrer");
   angelLink.setAttribute("title", "Angellist Link");
