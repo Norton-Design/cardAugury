@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Norton-Design/cardAugury#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "highcharts": "^8.2.2"
+    "highcharts": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
